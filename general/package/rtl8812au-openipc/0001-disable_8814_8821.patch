@@ -1,20 +1,11 @@
 --- a/Makefile	2023-11-08 03:23:56.619884059 +0300
 +++ b/Makefile	2023-11-08 03:51:10.864807292 +0300
-@@ -38,7 +38,7 @@ EXTRA_CFLAGS += -I$(src)/include
- EXTRA_LDFLAGS += --strip-debug
- 
- ########################## WIFI IC ############################
--CONFIG_RTL8812A = y
-+CONFIG_RTL8812A = n
- CONFIG_RTL8821A = y
- CONFIG_RTL8814A = n
- ######################### Interface ###########################
 @@ -206,9 +206,9 @@ else
  EXTRA_CFLAGS += -DDBG=0
  endif
  
 -ifeq ($(CONFIG_RTL8812A)_$(CONFIG_RTL8821A), y_y)
-+ifeq ($(CONFIG_RTL8812A)_$(CONFIG_RTL8821A)_$(CONFIG_RTL8814A), n_y_n)
++ifeq ($(CONFIG_RTL8812A)_$(CONFIG_RTL8821A)_$(CONFIG_RTL8814A), y_y_n)
  
 -EXTRA_CFLAGS += -DDRV_NAME=\"rtl88xxau_wfb\"
 +EXTRA_CFLAGS += -DDRV_NAME=\"rtl88xxau\"
